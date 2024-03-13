@@ -55,7 +55,7 @@ export default function Search() {
 
   async function FindLocation(e: KeyboardEvent) {
     if (e.key === "Enter") {
-      const url = `http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=10&appid=${API_KEY}`;
+      const url = `https://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=10&appid=${API_KEY}`;
       const resp = await fetch(url, {
         next: {
           revalidate: 3,
