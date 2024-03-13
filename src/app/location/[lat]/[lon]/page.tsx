@@ -71,8 +71,7 @@ function ForecastTableRow({ row }: { row: AggregateForecast }) {
 }
 
 async function ForecastTable({ data }: { data: Forecast }) {
-  const forecast = await forecastAggregateByDay(data);
-  console.log(forecast);
+  const forecast = forecastAggregateByDay(data);
   return (
     <div className="flex flex-col max-w-5xl w-full items-center justify-between space-y-5 lg:flex">
       <div className="w-full">
