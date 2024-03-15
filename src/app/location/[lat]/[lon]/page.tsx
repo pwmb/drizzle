@@ -121,11 +121,6 @@ export default async function Location({ params }: { params: Params }) {
   );
 }
 
-function getTimeFrom(ts: number) {
-  const d = new Date(ts * 1000);
-  return `${d.getHours()}:${d.getMinutes()}`;
-}
-
 function forecastAggregateByDay(forecast: Forecast) {
   type O = { [k: string]: AggregateForecast };
   const output: O = {};
