@@ -33,6 +33,13 @@ function SearchResult({ result }: { result: SearchResults }) {
 }
 
 function SearchResults({ results }: { results: SearchResults[] }) {
+  if (results.length === 0) {
+    return (
+      <p>
+        Could not find the pace you entered, make sure the spelling is correct!
+      </p>
+    );
+  }
   return (
     <div className="w-full">
       <div className="self-start pl-2">
