@@ -57,14 +57,14 @@ function ForecastTableRow({ row }: { row: AggregateForecast }) {
           {row.feels_like.toFixed(2)}
           <sup>o</sup>
         </p>
-        <p>Feels Like</p>
+        <p className="text-sm lg:text-lg">Feels Like</p>
       </div>
       <div className="flex flex-col items-center">
         <p>
           {row.temp.toFixed(2)}
           <sup>o</sup>
         </p>
-        <p>Avg. Temp.</p>
+        <p className="text-sm lg:text-lg">Avg. Temp.</p>
       </div>
     </div>
   );
@@ -73,9 +73,9 @@ function ForecastTableRow({ row }: { row: AggregateForecast }) {
 async function ForecastTable({ data }: { data: Forecast }) {
   const forecast = forecastAggregateByDay(data);
   return (
-    <div className="flex flex-col max-w-5xl w-full items-center justify-between space-y-5 lg:flex">
+    <div className="flex flex-col max-w-5xl w-full items-center justify-between lg:flex">
       <div className="w-full">
-        <div className="flex space-y-5 flex-col pt-5">
+        <div className="flex space-y-0 lg:space-y-5 flex-col pt-2 lg:pt-5">
           {forecast.map((f, i) => (
             <ForecastTableRow row={f} key={i}></ForecastTableRow>
           ))}
@@ -91,23 +91,19 @@ export default async function Location({ params }: { params: Params }) {
   const data: Forecast = await resp.json();
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex mb-10">
+    <main className="flex min-h-screen flex-col items-center lg:p-24">
+      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm mb-2 lg:flex lg:mb-10">
         <Link href="/">
           <p className="flex w-full justify-center border-b p-4 lg:static lg:w-auto text-lg lg:rounded-xl lg:border">
             Sunny Weather App
           </p>
         </Link>
       </div>
-      <div className="flex flex-col max-w-5xl w-full border py-5 px-16 text-lg lg:rounded-xl lg:border">
+      <div className="flex flex-col max-w-5xl w-full border-b text-lg items-center lg:py-5 lg:px-16 lg:rounded-xl lg:border">
         <p className="text-3xl text-center pb-5">
           {data.city.name}, {data.city.country}
         </p>
-        <div className="flex pt-2 justify-between">
-          <div className="flex flex-col items-center">
-            <FontAwesomeIcon icon={faSun} className="w-7 ml-2" />
-            <span>{getTimeFrom(data.city.sunrise)}</span>
-          </div>
+        <div>
           <div className="text-4xl from-gray-600 flex flex-col items-center">
             <div>
               {data.list[0].main.temp}
@@ -117,10 +113,6 @@ export default async function Location({ params }: { params: Params }) {
               Feels like {data.list[0].main.feels_like}
               <sup>o</sup>
             </span>
-          </div>
-          <div className="flex flex-col items-center">
-            <FontAwesomeIcon icon={faMoon} className="w-7" />
-            <span>{getTimeFrom(data.city.sunset)}</span>
           </div>
         </div>
       </div>

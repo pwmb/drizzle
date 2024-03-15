@@ -70,7 +70,7 @@ export default function Search() {
   }
 
   return (
-    <div className="flex flex-col max-w-5xl w-full items-center justify-between space-y-5 lg:flex">
+    <div className="flex flex-col max-w-5xl w-full px-5 items-center justify-between space-y-5 lg:flex lg:px-0">
       <div className="w-full">
         <div className="pt-2 relative mx-auto text-gray-600">
           <input
